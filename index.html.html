@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lakbay Wika</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,#2563eb,#7c3aed,#22c55e,#06b6d4);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+min-height:100vh;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* EMOJI BACKGROUND */
+
+.fun-background{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.emoji{
+position:absolute;
+font-size:30px;
+opacity:0.35;
+animation:floatEmoji linear infinite;
+}
+
+.emoji:nth-child(1){left:10%;animation-duration:20s;}
+.emoji:nth-child(2){left:20%;animation-duration:24s;}
+.emoji:nth-child(3){left:30%;animation-duration:18s;}
+.emoji:nth-child(4){left:40%;animation-duration:26s;}
+.emoji:nth-child(5){left:50%;animation-duration:22s;}
+.emoji:nth-child(6){left:60%;animation-duration:21s;}
+.emoji:nth-child(7){left:70%;animation-duration:25s;}
+.emoji:nth-child(8){left:80%;animation-duration:19s;}
+.emoji:nth-child(9){left:90%;animation-duration:23s;}
+
+@keyframes floatEmoji{
+0%{top:110%;}
+100%{top:-10%;}
+}
+
+/* CONTAINER */
+
+.container{
+width:100%;
+min-height:100vh;
+margin:0;
+padding:40px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+}
+
+h1{
+text-align:center;
+font-size:60px;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+margin-bottom:25px;
+}
+
+/* GRID */
+
+.input-grid{
+display:block;
+width:100%;
+}
+
+/* CARD */
+
+.card{
+background:white;
+color:#333;
+padding:60px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+font-size:20px;
+line-height:1.7;
+
+width:100%;
+max-width:1200px;
+margin:auto;
+margin-top:40px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+/* TEXTAREA */
+
+textarea{
+width:100%;
+height:150px;
+border-radius:8px;
+border:1px solid #ccc;
+padding:10px;
+resize:none;
+}
+
+/* BUTTON */
+
+button{
+margin-top:10px;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:25px;
+background:#facc15;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* CENTER BUTTON */
+
+.center-btn{
+text-align:center;
+margin-top:25px;
+}
+
+.suriin-btn{
+padding:18px 55px;
+font-size:20px;
+font-weight:bold;
+background:#22c55e;
+color:white;
+border-radius:35px;
+}
+
+.suriin-btn:hover{
+background:#16a34a;
+}
+
+/* CAMERA */
+
+video,canvas{
+width:100%;
+margin-top:10px;
+border-radius:10px;
+}
+
+/* RESULT */
+
+.result{
+margin-top:25px;
+background:white;
+color:#333;
+padding:20px;
+border-radius:12px;
+display:none;
+}
+
+.scores{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+margin-top:15px;
+}
+
+.score-card{
+background:#eef4ff;
+padding:12px;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
+}
+
+.improved{
+margin-top:15px;
+background:#e8ffe8;
+padding:15px;
+border-radius:8px;
+}
+/* NAVBAR */
+
+.navbar{
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+
+.logo{
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.nav-links button{
+margin-left:10px;
+}
+.nav-links{
+display:flex;
+width:100%;
+gap:15px
+}
+.nav-links button{
+flex:1;
+padding:20px;
+font-size:20px;
+border:none;
+border-radius:0;
+background:#facc15;
+cursor:pointer;
+}
+
+/* PALAKIHIN ANG ELFSIGHT CHATBOT */
+
+/* floating button */
+.elfsight-app-5b04cf7d-fe58-44e5-bfc9-20f1bc10d02e iframe{
+width:350px !important;
+height:500px !important;
+}
+
+/* kung naka-open na chat window */
+.eapps-widget{
+width:400px !important;
+height:600px !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="fun-background">
+<span class="emoji">📚</span>
+<span class="emoji">✏️</span>
+<span class="emoji">📝</span>
+<span class="emoji">💡</span>
+<span class="emoji">🧠</span>
+<span class="emoji">🎓</span>
+<span class="emoji">📖</span>
+<span class="emoji">✨</span>
+<span class="emoji">🌟</span>
+</div>
+
+<div class="container">
+
+<h1>LAKBAY WIKA</h1>
+<p class="subtitle">Matalinong Katulong sa Pagsulat sa Wikang Filipino</p>
+
+<div class="input-grid">
+
+<div style="grid-column:1/-1;text-align:center;margin-bottom:20px;">
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('body')">Body</button>
+<button onclick="showSection('about')">About</button>
+<button onclick="showSection('contact')">Contact</button>
+<button onclick="showSection('guide')">Guide</button>
+</div>
+
+<div class="card section" id="home">
+
+<h3>🏠 Home</h3>
+
+<p>
+Ang <b>Lakbay Wika</b> ay isang makabagong aplikasyon na nilikha upang
+tulungan ang mga mag-aaral at manunulat na mapaunlad ang kanilang
+kasanayan sa pagsulat sa Wikang Filipino.
+</p>
+
+<p>
+Sa pamamagitan ng teknolohiya, ang sistemang ito ay nagbibigay ng
+impormasyon at gabay upang mapabuti ang gramatika, estruktura,
+at kalinawan ng mga sulatin.
+</p>
+
+<p>
+Layunin ng Lakbay Wika na maging isang maaasahang katuwang ng
+mga gumagamit sa paglinang ng kanilang kakayahan sa pagsulat,
+pagpapahayag ng ideya, at pagpapalawak ng talasalitaan.
+</p>
+
+</div>
+
+<div class="card section" id="guide" style="display:none;">
+
+<h3>📘 Guide</h3>
+
+<p>
+Upang magamit nang maayos ang <b>Lakbay Wika</b>, sundin ang mga sumusunod na hakbang:
+</p>
+
+<ol>
+
+<li>
+Basahin muna ang mga seksyon na <b>Home, Body, About, at Contact</b> upang maunawaan ang layunin at gamit ng aplikasyon.
+</li>
+
+<li>
+Pagkatapos, pindutin ang <b>chatbot</b> na makikita sa <b>kanang ibabang bahagi ng screen</b>.
+</li>
+
+<li>
+Sa chatbot, ikaw ay hihingan ng <b>tema o paksa</b> para sa paggawa ng iyong sulatin.
+</li>
+
+<li>
+Kapag naibigay na ang paksa, gumawa ng iyong sariling <b>sulatin</b> batay sa ibinigay na tema.
+</li>
+
+<li>
+Ipadala o ipasa ang iyong ginawang sulatin sa chatbot.
+</li>
+
+<li>
+Pagkatapos nito, ang <b>AI</b> ay magbibigay ng <b>feedback</b> upang matulungan kang mapabuti ang iyong pagsulat.
+</li>
+
+</ol>
+
+<p>
+Gamitin ang gabay na ito upang mas maging epektibo ang iyong karanasan sa paggamit ng Lakbay Wika.
+</p>
+
+</div>
+
+<div class="card section" id="body" style="display:none;">
+
+<h3>📖 Body</h3>
+
+<p>
+Ang pangunahing layunin ng Lakbay Wika ay ang mapadali ang
+proseso ng pagkatuto ng wastong pagsulat sa wikang Filipino.
+</p>
+
+<p>
+Sa pamamagitan ng sistemang ito, ang mga gumagamit ay
+magkakaroon ng pagkakataong maunawaan ang kahalagahan ng
+tamang gramatika, malinaw na estruktura ng pangungusap,
+at wastong paggamit ng mga salita.
+</p>
+
+<p>
+Nakakatulong din ito upang mapalawak ang kaalaman ng mga
+mag-aaral sa tamang paraan ng pagpapahayag ng kanilang
+mga ideya sa pamamagitan ng pagsulat.
+</p>
+
+</div>
+
+<div class="card section" id="about" style="display:none;">
+
+<h3>ℹ️ About</h3>
+
+<p>
+Ang Lakbay Wika ay isang proyektong pang-edukasyon na
+idinisenyo upang pagsamahin ang teknolohiya at pagkatuto
+ng wika.
+</p>
+
+<p>
+Layunin nitong tulungan ang mga mag-aaral, guro, at
+manunulat na mapabuti ang kanilang kakayahan sa
+paggamit ng wikang Filipino sa pagsulat.
+</p>
+
+<p>
+Sa pamamagitan ng makabagong sistema, ang Lakbay Wika
+ay nagiging isang matalinong katuwang sa paglinang ng
+kakayahan sa komunikasyon at pagpapahayag.
+</p>
+
+</div>
+
+<div class="card section" id="contact" style="display:none;">
+
+<h3>📞 Contact</h3>
+
+<p>
+Kung mayroon kang mga katanungan, mungkahi, o nais
+malaman pa tungkol sa Lakbay Wika, maaari kang
+makipag-ugnayan sa amin sa pamamagitan ng mga
+impormasyong nakalista sa ibaba.
+</p>
+
+<p>Email: lakbaywika@gmail.com</p>
+
+<p>Facebook: Lakbay Wika</p>
+
+<p>Address: Batangas City</p>
+
+<p>
+Ang inyong mga komento at suhestiyon ay mahalaga upang
+mas mapabuti pa ang sistemang ito at mas makatulong sa
+mga mag-aaral na nais mapaunlad ang kanilang kakayahan
+sa pagsulat.
+</p>
+
+</div>
+
+<div class="result" id="resultBox">
+
+<h3>Resulta ng Pagsusuri</h3>
+
+<div id="feedback"></div>
+
+<div class="scores">
+<div class="score-card" id="grammarScore"></div>
+<div class="score-card" id="structureScore"></div>
+<div class="score-card" id="clarityScore"></div>
+<div class="score-card" id="vocabScore"></div>
+</div>
+
+<div class="improved">
+<h3>✨ Pinahusay na Bersyon</h3>
+<p id="improvedText"></p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let video=document.getElementById("video")
+
+function startCamera(){
+
+navigator.mediaDevices.getUserMedia({
+video:{facingMode:"environment"}
+})
+
+.then(stream=>{
+video.srcObject=stream
+})
+
+}
+
+function capturePhoto(){
+
+let canvas=document.getElementById("canvas")
+let ctx=canvas.getContext("2d")
+
+canvas.width=video.videoWidth
+canvas.height=video.videoHeight
+
+ctx.drawImage(video,0,0)
+
+}
+
+function previewImage(event){
+
+let canvas=document.getElementById("canvas")
+let ctx=canvas.getContext("2d")
+
+let img=new Image()
+
+img.src=URL.createObjectURL(event.target.files[0])
+
+img.onload=function(){
+
+canvas.width=img.width
+canvas.height=img.height
+
+ctx.drawImage(img,0,0)
+
+}
+
+}
+
+function improveText(text){
+
+let improved=text
+
+.replace(/kase/g,"kasi")
+.replace(/pero/g,"ngunit")
+.replace(/dahil sa/g,"sapagkat")
+
+if(!improved.endsWith(".")){
+improved+="."
+}
+
+return improved
+
+}
+
+function analyzeText(){
+
+let text=document.getElementById("textInput").value
+
+let feedback=""
+
+let grammar=90
+let structure=88
+let clarity=92
+let vocab=89
+
+if(text.length<60){
+feedback+="⚠️ Maikli pa ang sulatin.<br>"
+grammar-=10
+}
+
+if(text.includes("kase")){
+feedback+="✏️ Mas pormal ang 'kasi'.<br>"
+grammar-=5
+}
+
+if(text.split(".").length<3){
+feedback+="📚 Dagdagan ang pangungusap.<br>"
+structure-=8
+}
+
+if(feedback==""){
+feedback="✅ Maganda ang pagkakasulat!"
+}
+
+document.getElementById("feedback").innerHTML=feedback
+
+document.getElementById("grammarScore").innerHTML="Gramatika<br>"+grammar+"/100"
+document.getElementById("structureScore").innerHTML="Estruktura<br>"+structure+"/100"
+document.getElementById("clarityScore").innerHTML="Kalinawan<br>"+clarity+"/100"
+document.getElementById("vocabScore").innerHTML="Talasalitaan<br>"+vocab+"/100"
+
+document.getElementById("improvedText").innerText=improveText(text)
+
+document.getElementById("resultBox").style.display="block"
+
+}
+
+function showSection(section){
+
+let sections=document.querySelectorAll(".section")
+
+sections.forEach(sec=>{
+sec.style.display="none"
+})
+
+document.getElementById(section).style.display="block"
+
+}
+
+</script>
+
+<!-- Elfsight AI Chatbot | Untitled AI Chatbot -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-5b04cf7d-fe58-44e5-bfc9-20f1bc10d02e" data-elfsight-app-lazy></div>
+</body>
+</html>
